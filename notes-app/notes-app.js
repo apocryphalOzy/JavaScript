@@ -1,0 +1,49 @@
+//DOM - Document Object Model
+const notes = getSavedNotes()
+
+
+const filters = {
+    searchText: ''
+}
+
+
+renderNotes(notes, filters)
+
+document.querySelector('#create-note').addEventListener('click', function (e){
+        notes.push({
+        id: uuidv4(),
+        title: '',
+        body: ''
+    })
+    saveNotes(notes)
+    location.hash = 'example'
+    location.assign('/edit.html')
+    
+})
+
+
+document.querySelector('#search-text').addEventListener('input', function (e){
+    filters.searchText = e.target.value
+    console.log(e)
+    renderNotes(notes, filters)
+})
+
+
+document.querySelector("#filter-by").addEventListener('change', function(e){
+    console.log(e.target.value)
+})
+
+
+// Target Selectors
+
+// -- Single --
+// p (paragrapgh tag)
+// #replace (#Id)
+// .item (.class)
+
+
+// -- Mutliple --
+// p#order
+// button.inventory
+// h1#title.application
+// h1.application#title
